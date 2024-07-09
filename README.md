@@ -33,34 +33,35 @@ Gobbled up with React and Spring Boot, it ensures a dynamic and responsive user 
 Follow these steps to set up the project locally:
 
 **Prerequisites**
-
 ``Ensure you have the following installed:
 Java JDK 11+
 Maven
 Node.js & npm
 PostgreSQL``
 
-## Backend Setup
+## Backend Setup 
 
-```git clone https://github.com/YeZaw2003NeoPhenon/emp_ms_react_project.git
-cd emp_ms_react_project/backend```
+``git clone https://github.com/YeZaw2003NeoPhenon/emp_ms_react_project.git
+cd emp_ms_react_project/backend``
 
-```Create a PostgreSQL database.```
-```Update src/main/resources/application.properties with your database credentials:```
+``Create a PostgreSQL database.``
+``Update src/main/resources/application.properties with your database credentials:``
 
-```spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+``
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
 spring.datasource.username=your_database_username
-spring.datasource.password=your_database_password```
+spring.datasource.password=your_database_password
+``
 
-## Contributing
+## Contributing ##
 
 ** Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. **
 
-`` Fork the Project
+``Fork the Project
 Create your Feature Branch (git checkout -b feature/AmazingFeature)
 Commit your Changes (git commit -m 'Add some AmazingFeature')
 Push to the Branch (git push origin feature/AmazingFeature)
-Open a Pull Request ``
+Open a Pull Request``
 
 
 ```./mvnw spring-boot:run```
@@ -76,8 +77,8 @@ Open a Pull Request ``
 ```npm start```
 
 **Access the Application:**
-```Open your browser and navigate to http://localhost:3000.
-The application will prompt you to log in or create an account.```
+``Open your browser and navigate to http://localhost:3000.
+The application will prompt you to log in or create an account.``
 
 ### API Endpoints
 
