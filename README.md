@@ -8,12 +8,12 @@ It provides judicious CRUD operations and an intuitive user interface.
 Gobbled up with React and Spring Boot, it ensures a dynamic and responsive user experience as well as brimming with vehement Handling of components make the project exquisite.
 
 ## Features
-- CRUD Operations: Easily create, read, update, and delete blog posts.
-- Form Validation: Robust validation with Formik and Yup.
-- Smooth Navigation: Utilizes React Router for a seamless browsing experience.
-- Responsive Design: Ensures usability across various devices.
-- Loading Spinner: Visual feedback for asynchronous operations.
-- PostgreSQL Integration: Reliable data storage with PostgreSQL.
+- **CRUD Operations:** Easily create, read, update, and delete blog posts.
+- **Form Validation:** Robust validation with Formik and Yup.
+- **Smooth Navigation:** Utilizes React Router for a seamless browsing experience.
+- **Responsive Design:** Ensures usability across various devices.
+- **Loading Spinner:** Visual feedback for asynchronous operations.
+- **PostgreSQL Integration:** Reliable data storage with PostgreSQL.
 
 ### Backend
 
