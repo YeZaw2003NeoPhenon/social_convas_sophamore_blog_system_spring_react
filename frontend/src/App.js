@@ -69,14 +69,14 @@ function App() {
   }
  }
 
- const handleEdit = async(id) => {
+ const handleEdit = async(id , title ,body ) => {
   const datetime = format(new Date() , 'MMMM dd, yyyy pp');
-  const updatedPost = { id , title : editPostTitle , datetime , body : editPostBody };
+  const updatedPost = { id ,title , datetime , body };
   try{
     const response = await postService.updatePost(id ,updatedPost)
     console.log(response);
-    // setPosts(posts.map(post => post.id === id ? response : post));
-    setPosts([...posts , response])
+    setPosts(posts.map( post => post.id === id ? response : post ))
+    // setPosts([...posts , response])
     setEditPostTitle('')
     setEditPostBody('')
     history.push('/'); 
@@ -109,12 +109,12 @@ function App() {
         </Route>
 
     <Route path = "/edit/:id">
-      <EditPost posts = {posts} 
+      <EditPost
+       handleEdit = {handleEdit}
        editPostTitle = {editPostTitle}
        editPostBody = {editPostBody}
-       setEditPostTitle={setEditPostTitle}
+       setEditPostTitle = {setEditPostTitle}
        setEditPostBody = {setEditPostBody}
-       handleEdit = {handleEdit}
        showAlertMessage = {showAlertMessage}/>
     </Route>
     
