@@ -1,20 +1,26 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
-import { Alert , Spinner } from "react-bootstrap";
+import { Alert , Button, ButtonGroup, Container, Form, FormControl, FormLabel, Row, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 const NewPost = ({insertIntoPost , setPosts}) => {
     const inputRef = useRef(null)
     const[buttonText , setButtonText ] = useState("Create")
     const[isButtonDisabled , setIsButtonDisabled] = useState(false)
     const history = useHistory()
+    const initialPostState = {
+        title : '',
+        body: '',
+        datetime: new Date().toISOString()
+    }
+    const [post, setPost] = useState(initialPostState);
+    
+    useEffect(() => {
+        setPost(initialPostState)
+    },[])
 
     const formik = useFormik({
-        initialValues : {
-            title : '',
-            body: '',
-            datetime: new Date().toISOString()
-        },
+        initialValues : post ,
         validationSchema : Yup.object({
             title : Yup.string()
                     .min(5, 'Title must be at least 5 characters')
@@ -31,8 +37,9 @@ const NewPost = ({insertIntoPost , setPosts}) => {
             setIsButtonDisabled(true)
             setButtonText("Creating...")
             try{
-                 const response = await insertIntoPost(values)
-                setPosts(response);
+                const response = await insertIntoPost(values)
+                setPost(response)
+                setPosts([...post , response]);
                 setButtonText("Created")
                 setTimeout(() => {
                     history.push('/');
@@ -51,11 +58,14 @@ const NewPost = ({insertIntoPost , setPosts}) => {
     })
 
     return(
-        <main className="NewPost">
-            <h2>Create Post</h2>
-            <form  onSubmit={formik.handleSubmit}>
-                <label htmlFor="title">Title:</label>
-                <input type="text" 
+        <Container className="NewPost">
+            <Row>
+                <h2>Create Post</h2>
+            </Row>
+           <Row>
+           <Form  onSubmit={formik.handleSubmit}>
+                <FormLabel htmlFor="title">Title:</FormLabel>
+                <FormControl type="text" 
                 id = "title" 
                 name = "title"
                 value = {formik.values.title} 
@@ -63,26 +73,29 @@ const NewPost = ({insertIntoPost , setPosts}) => {
                 onBlur={formik.handleBlur}
                 ref={inputRef}
                 placeholder="Enter the post title"
+                isInvalid = {formik.touched.title && formik.errors.title }
                 required/>
-                {formik.touched.title && formik.errors.title ?(
+                <FormControl.Feedback type  = "invalid">
                     <div className = "error">{formik.errors.title}</div>
-                ) : null }
-
-                <label htmlFor="body">Post:</label>
-                <textarea id="body" 
+                </FormControl.Feedback>
+                <FormLabel htmlFor="body">Body:</FormLabel>
+                <FormControl id="body" 
                  value = {formik.values.body}
                  name = "body"
+                 as= "textarea"
                  onChange={formik.handleChange}
                  onBlur={formik.handleBlur}
+                 isInvalid = {formik.touched.title && formik.errors.body}
                  required
                  />
-                     {formik.touched.title && formik.errors.body ?(
-                    <div className = "error">{formik.errors.body}</div>
-                ) : null }
+
+                 <FormControl.Feedback type  = "invalid">
+                 <div className = "error">{formik.errors.body}</div>
+                </FormControl.Feedback>
                  
                  {/* we have got commodiously post title and post body that we branched out vivaciously */}
-                <div className = "btn-group">
-                <button type="submit" onClick={() => inputRef.current.focus()} disabled = {formik.isSubmitting || isButtonDisabled}>
+                <ButtonGroup className = "btn-group">
+                <Button type="submit" onClick={() => inputRef.current.focus()} disabled = {formik.isSubmitting || isButtonDisabled}>
                 {formik.isSubmitting ? (
                     <>
                     <Spinner animation="border" as="span" size="sm" 
@@ -94,17 +107,18 @@ const NewPost = ({insertIntoPost , setPosts}) => {
                 ) : (
                     buttonText
                 )}
-                </button>
+                </Button>
 
-                <button type="reset" onClick={() => {
+                <Button type="reset" onClick={() => {
                     formik.resetForm()
                     setIsButtonDisabled(false)
                     setButtonText('Create')
-                }}>Reset Form</button>
-                </div>
-            </form>
+                }}>Reset Form</Button>
+                </ButtonGroup>
+            </Form>
+           </Row>
             {formik.errors.submit && <Alert variant="danger" className = "mt-4" show dismissible>{formik.errors.submit}</Alert>}
-        </main>
+        </Container>
     )
 }
 export default NewPost;

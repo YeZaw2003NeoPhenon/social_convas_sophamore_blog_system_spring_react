@@ -43,18 +43,6 @@ body{
     justify-content:space-between;
     font-size: 3.5rem;
 }
-.Footer{
-  width:100%;
-  display:flex;
-  background-color: #66d8f5;
-  align-items: center;
-  padding:1rem;
-    padding:1rem;
-    display: grid;
-    place-content: center;
-    margin-top:56vh;
-}
-
 .Nav{
   width:100%;
   background-color: #333;
@@ -406,3 +394,129 @@ body{
     font-size: 1.05rem;
     font-weight: 400;
   }
+  
+  .about-section {
+    margin-bottom: 20px; 
+  }
+  
+  .about-title {
+    color: #f8f9fa; 
+    font-size: 24px; 
+    margin-bottom: 15px; 
+  }
+  
+  .about-text {
+    font-size: 16px; 
+    line-height: 1.6;
+  }
+  
+  .contact-info {
+    margin-top: 20px; 
+    font-size: 14px; 
+  }
+  
+  .social-icons {
+    margin-top: 20px; 
+  }
+  
+  .social-icons a {
+    color: #ffffff; 
+    margin-right: 15px; 
+    transition: color 0.3s ease; 
+  }
+  
+  .social-icons a:hover {
+    color: #adb5bd; 
+  }
+  
+  .py-3 {
+    padding-top: 1rem; 
+    padding-bottom: 1rem;
+  }
+  
+  .text-center {
+    text-align: center; 
+  }
+  
+  @media (max-width: 768px) {
+    .about-section {
+      margin-bottom: 0; 
+    }
+  
+    .social-icons {
+      margin-top: 10px;
+    }
+  }
+  
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #333;
+}
+
+.contact-info {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.contact-info a {
+  color: #007bff;
+}
+
+.Footer p {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+}
+.Footer {
+  width:100%;
+  display:flex;
+  align-items: center;
+  padding:1rem;
+  padding:1rem;
+  display: grid;
+  place-content: center;
+  margin-top:56vh;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.Footer .social-icons a {
+  margin: 0 10px;
+  color: #fff;
+}
+
+.Footer .social-icons a:hover {
+  color: #007bff;
+}
+
+.Footer h5 {
+  margin-bottom: 15px;
+}
+
+.Footer p {
+  margin: 0;
+}
+
+.Footer .text-center {
+  text-align: center;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .Footer {
+    padding: 20px 0;
+  }
+
+  .about-title {
+    font-size: 20px;
+  }
+
+  .social-icons a {
+    font-size: 20px;
+  }
+} 
