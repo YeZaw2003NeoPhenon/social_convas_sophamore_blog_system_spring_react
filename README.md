@@ -79,12 +79,7 @@ Open a Pull Request``
 **Access the Application:**
 ``Open your browser and navigate to http://localhost:3000.
 The application will prompt you to log in or create an account.``
-
-### API Endpoints
-
-## Authentication
-``POST /api/auth/login:`` Authenticate user and obtain a token.
-``POST /api/auth/register:`` Register a new user.
+.
 
 ## Posts
 ``GET /api/posts:`` Retrieve all posts.
